@@ -25,13 +25,8 @@
 
 #example.com default._domainkey.example.com
 
-{%- set type, filePath = SigningTable %}
 {%- for domainName, domain in key.items() %}
   {%- for selector, key in domain.items() %}
-    {%- if type == "refile" %}
 *@{{ domainName }} {{ selector }}._domainkey.{{ domainName }}
-    {%- else %}
-{{ domainName }} {{ selector }}._domainkey.{{ domainName }}
-    {%- endif %}
   {% endfor %}
 {%- endfor %}

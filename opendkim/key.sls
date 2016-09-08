@@ -17,15 +17,15 @@
     - require:
       - pkg: opendkim_packages
 
-{% for selector, key in domain.items() %} 
+{% for selector, key in domain.items() %}
 
 {{ opendkim.privateKey.directory }}/{{ domainName }}/{{ selector }}.private:
   file.managed:
     - mode: 600
-    - user: {{ user }} 
+    - user: {{ user }}
     - group: {{ group}}
     - contents: |
-        {{ key | indent(8) }} 
+        {{ key | indent(8) }}
     - watch_in:
       - service: opendkim_service
     - require:
@@ -70,11 +70,10 @@
     - context:
         key: {{ opendkim.privateKey.key }}
         keyDirectory: {{ opendkim.privateKey.directory }}
-        SigningTable: {{ opendkim.conf.SigningTable }}
+        signingTable: {{ opendkim.conf.SigningTable }}
     - watch_in:
       - service: opendkim_service
     - require:
       - pkg: opendkim_packages
 
 {% endif %}
-
