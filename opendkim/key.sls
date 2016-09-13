@@ -37,7 +37,8 @@
 
 {% if 'manageKeyTable' in opendkim and 'KeyTable' in opendkim.conf and opendkim.manageKeyTable == true %}
 
-{{ opendkim.conf.KeyTable }}:
+{%-  set type, filePath = opendkim.conf.KeyTable.split(':') %}
+{{ filePath }}:
   file.managed:
     - mode: 640
     - source: salt://opendkim/files/KeyTable.tmpl
