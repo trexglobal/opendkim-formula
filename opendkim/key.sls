@@ -85,7 +85,7 @@
 {{ filePath }}:
   file.managed:
     - mode: 640
-    - source: {{ opendkim.TrustedHostsTemplateLocation }}
+    - source: {{ opendkim.trustedHostsTemplateLocation }}
     - user: {{ user }}
     - group: {{ group }}
     - template: 'jinja'

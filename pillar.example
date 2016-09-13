@@ -19,7 +19,7 @@ opendkim:
     OversignHeaders: "From"
   manageKeyTable: true
   manageSigningTable: true
-  TrustedHostsTemplateLocation: "salt://opendkim/files/TrustedHosts.tmpl"
+  trustedHostsTemplateLocation: "salt://opendkim/files/TrustedHosts.tmpl"
   privateKey:
     directory: "/etc/opendkim/keys"
     key:
