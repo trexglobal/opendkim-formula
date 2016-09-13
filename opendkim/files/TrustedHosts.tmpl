@@ -1,0 +1,13 @@
+localhost
+127.0.0.1
+
+{%- set type, filePath = signingTable.split(':') %}
+{%- for domainName, domain in key.items() %}
+  {%- for selector, key in domain.items() %}
+    {%- if type == "refile" %}
+*.{{ domainName }}
+    {%- else %}
+{{ domainName }}
+    {%- endif %}
+  {% endfor %}
+{%- endfor %}

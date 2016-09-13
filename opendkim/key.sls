@@ -77,3 +77,26 @@
       - pkg: opendkim_packages
 
 {% endif %}
+
+
+{% if 'InternalHosts' in opendkim.conf %}
+
+{%-  set type, filePath = opendkim.conf.InternalHosts.split(':') %}
+{{ filePath }}:
+  file.managed:
+    - mode: 640
+    - source: {{ opendkim.TrustedHostsTemplateLocation }}
+    - user: {{ user }}
+    - group: {{ group }}
+    - template: 'jinja'
+    - backup: minion
+    - context:
+        key: {{ opendkim.privateKey.key }}
+        keyDirectory: {{ opendkim.privateKey.directory }}
+        signingTable: {{ opendkim.conf.SigningTable }}
+    - watch_in:
+      - service: opendkim_service
+    - require:
+      - pkg: opendkim_packages
+
+{% endif %}
