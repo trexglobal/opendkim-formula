@@ -1,9 +1,10 @@
 opendkim:
   conf:
     UserID: "opendkim:opendkim"
-    KeyTables: "/etc/opendkim/KeyTable"
-    SigningTable: "/etc/opendkim/SigningTable"
-    PidFile: "/var/run/opendkim/opendkim.pid"
+    KeyTable: "refile:/etc/opendkim/KeyTable"
+    SigningTable: "refile:/etc/opendkim/SigningTable"
+    PidFile: "refile:/var/run/opendkim/opendkim.pid"
+    InternalHosts: "refile:/etc/opendkim/TrustedHosts"
     Mode: "v"
     Syslog: "yes"
     SyslogSuccess: "yes"
@@ -22,7 +23,7 @@ opendkim:
     directory: "/etc/opendkim/keys"
     key:
       example.com:
+        type: refile
         selector: |
           -----BEGIN RSA PRIVATE KEY-----
           -----END RSA PRIVATE KEY-----
- 

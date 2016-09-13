@@ -58,7 +58,7 @@
 
 {% if 'manageSigningTable' in opendkim and 'SigningTable' in opendkim.conf and opendkim.manageSigningTable == true %}
 
-{%- set filePath = opendkim.conf.SigningTable %}
+{%-  set type, filePath = opendkim.conf.SigningTable.split(':') %}
 {{ filePath }}:
   file.managed:
     - mode: 640
