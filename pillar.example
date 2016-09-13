@@ -25,6 +25,6 @@ opendkim:
     key:
       example.com:
         type: refile
-        selector: |
+        default: |
           -----BEGIN RSA PRIVATE KEY-----
           -----END RSA PRIVATE KEY-----
