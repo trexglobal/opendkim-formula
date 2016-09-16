@@ -30,6 +30,7 @@
       - service: opendkim_service
     - require:
       - pkg: opendkim_packages
+      - file: {{ opendkim.privateKey.directory }}/{{ domainName }}/
 
   {% endfor %}
 
